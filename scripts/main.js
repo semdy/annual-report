@@ -119,8 +119,8 @@
       '       </div>'
     });
 
-    $("#recs-store").text(data.fbd);
-    $("#billNo").text(data.cardno);
+    $("#recs-store").text(data.fbd||"");
+    $("#billNo").text(data.cardno||"");
     $("#billSeller").text(data.fbseller === undefined ? 546512 : data.fbseller);
     $("#ptime").text(data.fbt ? formatDate(new Date(data.fbt), 'yyyy-MM-dd HH:mm:ss') : '');
     $("#buy-records").html(recs);
@@ -129,8 +129,8 @@
   }
 
   function page3(data) {
-    $("#bnum").text(data.buycount);
-    $("#bfee").text(data.buyfee);
+    $("#bnum").text(data.buycount||0);
+    $("#bfee").text(data.buyfee||0);
     var bstack = '';
     for(var i = 1; i<9; i++) {
       bstack += '<img class="bread'+ i +' animated" data-show="slideDown" data-delay="'+ (2000-i*200) +'" src="'+ URLObj.Config.urls.sourceUrl +'/resource/assets/b'+ i +'.png"/>'
@@ -147,7 +147,7 @@
       var num = e.split(" ")[1];
       history += '<div class="buy-item animated" data-show="bounceIn" data-delay="'+ (400 + i*200) +'">\n' +
         '          <span>'+ name +'</span>\n' +
-        '          <span><em>'+ parseInt(num) +'</em>个</span>\n' +
+        '          <span><em>'+ (parseInt(num)||0) +'</em>个</span>\n' +
         '        </div>';
     });
 
@@ -159,7 +159,7 @@
   function page5(data) {
     $("#receive-redb, #receive-redb2").text(data.shareredbag||0);
     $("#send-redb, #send-redb2").text(data.sendredbag||0);
-    $("#reward-redb").text(data.getredbag);
+    $("#reward-redb").text(data.getredbag||0);
     if (!openid) {
       $("#genbtn").remove();
     } else {
