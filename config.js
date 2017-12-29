@@ -1,6 +1,7 @@
 var URLObj = {
   urlHost: "@@urlHost",
   siloHost: "@@siloHost",
+  shareUrl: "@@shareUrl",
   weixinapiURL: "@@weixinapiURL",
   weixinAuthUser : "@@weixinAuthUser"
 };
@@ -40,7 +41,6 @@ var URLObj = {
       userinfo: URLObj.urlHost + '/usercenter/user/info',
       buyrecord: URLObj.urlHost + '/user/buy/record/get',
       shareReward: URLObj.urlHost + '/user/reward/share/151',
-      shareUrl: 'http://' + hostname + '/OrderUI-wheat/activity/activitys/annual-report',
       sourceUrl: 'http://edm.mcake.com/shuxy/2017/annual-report',
       shareIcon: 'http://edm.mcake.com/shuxy/2017/annual-report/resource/assets/shareIcon.png'
     },

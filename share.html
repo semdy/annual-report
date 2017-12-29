@@ -12,7 +12,7 @@
   if (!openid) {
     redirect_uri = URLObj.weixinAuthUser;
   } else {
-    redirect_uri = URLObj.Config.urls.shareUrl + '/index.html?uname=' + URLObj.Config.uname + "&openid=" + openid;
+    redirect_uri = URLObj.shareUrl + '/index.html?uname=' + URLObj.Config.uname + "&openid=" + openid;
   }
   location.replace(redirect_uri);
 </script>

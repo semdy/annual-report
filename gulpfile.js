@@ -124,7 +124,7 @@ gulp.task('webserver', function() {
 
 gulp.task('watch', function(){
   gulp.watch('./styles/**/*.scss', ['compile-sass']);
-  gulp.watch('./config.js', ['config-replace-dev']);
+  gulp.watch(['./appConfig.json', './config.js'], ['config-replace-dev']);
 });
 
 //重新build前删除生产目录

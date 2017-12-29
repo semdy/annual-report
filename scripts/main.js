@@ -102,7 +102,7 @@
 
   function page2(data) {
     var recs = '';
-    var buyRecs = data.fbbrade.split(",");
+    var buyRecs = (data.fbbrade||"").split(",");
     var buyCount = 0;
     var totalPrice = 0;
     buyRecs.forEach(function(e){
@@ -142,7 +142,7 @@
 
   function page4(data) {
     var history = '';
-    data.buysku.split(',').forEach(function (e, i) {
+    (data.buysku||"").split(',').forEach(function (e, i) {
       var name = e.split(" ")[0];
       var num = e.split(" ")[1];
       history += '<div class="buy-item animated" data-show="bounceIn" data-delay="'+ (400 + i*200) +'">\n' +
@@ -201,7 +201,7 @@
 
     weixinApiService.exec('onMenuShareTimeline',{
       title: '原麦山丘四周年，邀你一起领福利！',
-      link: URLObj.Config.urls.shareUrl + '/share.html?uname=' + URLObj.Config.uname + '&openid=' + getOpenid(),
+      link: URLObj.shareUrl + '/share.html?uname=' + URLObj.Config.uname + '&openid=' + getOpenid(),
       imgUrl:  URLObj.Config.urls.shareIcon,
       success: function (res) {
         shareReward();
@@ -219,7 +219,7 @@
     weixinApiService.exec('onMenuShareAppMessage',{
       title: '原麦山丘四周年，邀你一起领福利！',
       desc: '这台时光机，只想与你分享！',
-      link: URLObj.Config.urls.shareUrl + '/share.html?uname=' + URLObj.Config.uname + '&openid=' + getOpenid(),
+      link: URLObj.shareUrl + '/share.html?uname=' + URLObj.Config.uname + '&openid=' + getOpenid(),
       imgUrl:  URLObj.Config.urls.shareIcon,
       success: function () {
         shareReward();

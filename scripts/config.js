@@ -1,6 +1,7 @@
 var URLObj = {
   urlHost: "http://{hostname}/zaofans_wheat",
   siloHost: "http://it.zaofans.com/silo/debug",
+  shareUrl: "http://{hostname}/OrderUI-wheat/activity/activitys/annual-report",
   weixinapiURL: "http://{hostname}/weixin_wheat/open-api",
   weixinAuthUser : "https://open.weixin.qq.com/connect/oauth2/authorize?appid={appid}&redirect_uri=http%3A%2F%2F{hostname}%2FOrderUI-wheat%2Factivity%2Factivitys%2Fannual-report%2Findex.html?uname={uname}&response_type=code&scope=snsapi_base&state=123456#wechat_redirect"
 };
@@ -40,7 +41,6 @@ var URLObj = {
       userinfo: URLObj.urlHost + '/usercenter/user/info',
       buyrecord: URLObj.urlHost + '/user/buy/record/get',
       shareReward: URLObj.urlHost + '/user/reward/share/151',
-      shareUrl: 'http://' + hostname + '/OrderUI-wheat/activity/activitys/annual-report',
       sourceUrl: 'http://edm.mcake.com/shuxy/2017/annual-report',
       shareIcon: 'http://edm.mcake.com/shuxy/2017/annual-report/resource/assets/shareIcon.png'
     },
