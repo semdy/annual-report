@@ -1,0 +1,188 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>原麦山丘年度总结</title>
+  <!-- build:css styles/app.css -->
+  <link rel="stylesheet" type="text/css" href="styles/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/anim.css">
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+
+<body>
+
+<div id="loading-modal">
+  <div id="app-spin" class="loading-spin">loading: 0%</div>
+  <div class="loading-hint">时光机已启动，正在穿越时光...</div>
+</div>
+
+<audio id="Jaudio" autoplay="autoplay" loop="loop" preload="auto"
+       src="resource/assets/mqms.mp3">
+</audio>
+
+<div class="page-container">
+  <div class="page-behind">
+    <div class="stars-bg"></div>
+    <div class="meteors">
+      <span class="mt1"></span>
+      <span class="mt2"></span>
+      <span class="mt3"></span>
+    </div>
+  </div>
+
+  <div id="pages-wrapper" class="pages" style="display: none;">
+    <div class="page page1">
+      <div class="user-rela">
+        <div class="avatar">
+          <span class="avatar-img">
+            <img id="avatar" src=""/>
+          </span>
+        </div>
+        <div class="user-nickname" id="nickname"></div>
+      </div>
+
+      <div class="index-title">
+        <img src="resource/assets/index-title.png"/>
+      </div>
+
+      <div class="index-subject">
+        <img class="animated" data-show="updown" src="resource/assets/index-subject.png"/>
+      </div>
+
+      <div class="ym-logo animated" data-delay="200" data-show="flipInY">
+        <img src="resource/assets/ym-logo.png"/>
+      </div>
+
+    </div>
+
+    <div class="page page2">
+      <div class="top-title animated" data-show="fadeInLeft" data-delay="400">我和原麦山丘的故事</div>
+      <div class="main-title animated" data-show="fadeInRight" data-delay="600">“原麦山丘初体验”</div>
+      <div class="firstbuy-title animated" data-show="slideDown" data-delay="1200">第一次购买原麦山丘</div>
+      <div class="bill-wrap animated" data-show="slideUp" data-delay="1400">
+        <div class="bill-bd">
+          <div class="bill-header">
+            <div class="bill-title">原麦山丘<br/><span id="recs-store"></span></div>
+            <div class="bill-i">会员号：<span id="billNo"></span></div>
+            <div class="bill-i">收银员：<span id="billSeller"></span></div>
+            <div class="bill-i">打印时间：<span class="print-time" id="ptime"></span></div>
+          </div>
+          <div class="bill-list">
+            <div class="bill-row">
+              <div class="bill-cell">品名</div>
+              <div class="bill-cell">单价</div>
+              <div class="bill-cell">数量</div>
+              <div class="bill-cell">金额</div>
+            </div>
+            <div id="buy-records" class="bill-rows-body">
+            </div>
+          </div>
+          <div class="bill-footer">
+            <div class="bill-row">
+              <div class="bill-cell">合计</div>
+              <div class="bill-cell"></div>
+              <div class="bill-cell" id="recs-count"></div>
+              <div class="bill-cell" id="recs-total"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page page3">
+      <div class="main-title title-frame">堆积的山丘</div>
+      <div id="bstack" class="bread-stack"></div>
+      <div class="consum-info">
+        <p class="animated" data-show="slideUp" data-delay="400">累计购买 <em id="bnum"></em><sub>个</sub>面包</p>
+        <p class="animated" data-show="slideUp" data-delay="600">共消费 <em id="bfee"></em><sub>元</sub></p>
+        <p class="animated" data-show="slideUp" data-delay="800">打败了<em id="percent">0</em><sub>%</sub>的原麦粉丝</p>
+      </div>
+    </div>
+
+    <div class="page page4">
+      <div class="main-title title-frame">堆积的山丘</div>
+      <div id="bhistory" class="buy-history"></div>
+      <div class="buy-summary">
+        <p class="animated" data-show="slideUp" data-delay="1000">购买 <em id="gxnum"></em><sub>个</sub>面包</p>
+        <p class="animated" data-show="slideUp" data-delay="1200">累计摄入的膳食纤维相当于<em id="appleNum"></em><sub>个</sub>苹果</p>
+      </div>
+    </div>
+
+    <div class="page page5">
+      <div class="main-title title-frame">原麦山丘财报</div>
+      <div class="redp-wrap">
+        <div class="redp-item recive animated" data-show="pulse"><span id="receive-redb"></span><sub>个</sub></div>
+        <div class="redp-item send animated" data-show="pulse"><span id="send-redb"></span><sub>个</sub></div>
+      </div>
+      <div class="alpha-panel">
+        <p class="animated" data-show="slideUp" data-delay="400">领取红包<em id="receive-redb2"></em><sub>个</sub></p>
+        <p class="animated" data-show="slideUp" data-delay="600">发送红包<em id="send-redb2"></em><sub>个</sub></p>
+        <p class="animated" data-show="slideUp" data-delay="800">你的红包<em id="reward-redb"></em><sub>个</sub>人领取过</p>
+        <p class="animated" data-show="slideUp" data-delay="1000">第一个红包来自<em id="redbagfrom"></em></p>
+      </div>
+    </div>
+
+    <div class="page page6">
+      <div class="main-title">
+        <img class="animated" data-show="slideDown" data-delay="400" src="resource/assets/thanks-title.png"/>
+      </div>
+      <div class="page6-panel">
+        <div class="animated" data-show="fadeIn" data-delay="800">
+          <div class="qrcode">
+            <img src="resource/assets/qrcode.jpg"/>
+          </div>
+          <div class="qrcode-hint">长按或扫码立享网购</div>
+          <div class="share-hint" id="shareHint">
+            点击右上角分享Ta来【生成时光机】！
+            <span>立享美式咖啡一杯~</span>
+          </div>
+        </div>
+        <div class="actions animated" data-show="zoomInDown" data-delay="1200">
+          <button id="genbtn" class="act-btn">生成时光机</button>
+          <button id="sharebtn" class="act-btn blue">去分享</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="parrow" class="page-arrow" style="display: none;">
+    <span class="arrow-down"></span>
+  </div>
+
+</div>
+
+<div id="shareMask"></div>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://edm.mcake.com/shuxy/2016/MovieClip/main.js"></script>
+
+<script type="text/javascript" src="scripts/config.js"></script>
+
+<script type="text/javascript" src="scripts/vendor/transform.min.js"></script>
+
+<!-- build:js scripts/app.js -->
+<script type="text/javascript" src="scripts/vendor/flexible.js"></script>
+<script type="text/javascript" src="scripts/vendor/zepto.min.js"></script>
+<script type="text/javascript" src="scripts/vendor/fastclick.js"></script>
+<script type="text/javascript" src="scripts/vendor/alloy_touch.js"></script>
+<script type="text/javascript" src="scripts/vendor/alloy_touch.full_page.js"></script>
+<script type="text/javascript" src="scripts/storage.js"></script>
+<script type="text/javascript" src="scripts/WeixinApiService.js"></script>
+<script type="text/javascript" src="scripts/auth.js"></script>
+<script type="text/javascript" src="scripts/resData.js"></script>
+<script type="text/javascript" src="scripts/main.js"></script>
+<!-- endbuild -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83431511-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83431511-2');
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script type="text/javascript" src="scripts/config.js"></script>
+<script>
+  var redirect_uri;
+  var openid = getQueryString("openid");
+  if (!openid) {
+    redirect_uri = URLObj.weixinAuthUser;
+  } else {
+    redirect_uri = URLObj.Config.urls.shareUrl + '/index.html?uname=' + URLObj.Config.uname + "&openid=" + openid;
+  }
+  location.replace(redirect_uri);
+</script>
+</body>
+</html>
