@@ -18,7 +18,7 @@
     if (r !== null) return unescape(r[2]); return null;
   }
 
-  var STORAGE_KEY = getQueryString("uname") || window.localStorage.getItem("_wx_uname") || 'zaofans';
+  var STORAGE_KEY = getQueryString("uname") || window.localStorage.getItem("wx_uname") || 'zaofans';
 
   function getKey(key) {
     if (key === undefined || key === null || key === "") return key;

@@ -24,7 +24,7 @@
   }
 
   function getOpenid () {
-    return openid || storage.local.get('__openid');
+    return openid || storage.local.get('_openid');
   }
 
   function main() {
@@ -71,7 +71,7 @@
   function getRecord() {
     return new Promise(function (resolve, reject) {
       ajaxUtils.get(URLObj.Config.urls.buyrecord, {
-        __sessionid: storage.local.get('__sessionid')
+        __sessionid: storage.local.get('_sessionid')
         }).then(function (res) {
         if (res.status === 0) {
           resolve(res.data);
@@ -93,7 +93,7 @@
   }
 
   function page1() {
-    var user = storage.local.get('user');
+    var user = storage.local.get('_user');
     if (user) {
       $("#avatar").attr("src", user.PORTRAIT);
       $("#nickname").text(user.USERNAME || user.NAME);
@@ -166,7 +166,7 @@
       $("#sharebtn").remove();
       $("#shareHint").remove();
       $("#genbtn").click(function(){
-        if (storage.local.get('__isFollowed')) {
+        if (storage.local.get('_isFollowed')) {
           location.href = URLObj.weixinAuthUser;
         } else {
           alert('请先关注原麦山丘公众号');
@@ -186,7 +186,7 @@
     ajaxUtils.post(
       URLObj.Config.urls.shareReward,
       {
-        __sessionid: storage.local.get('__sessionid')
+        __sessionid: storage.local.get('_sessionid')
       }).then(function(res){
         if (res.status !== 0) {
           console.error(res.msg)

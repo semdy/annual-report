@@ -48,9 +48,9 @@ var URLObj = {
     useCache: false
   };
 
-  localStorage.setItem("_wx_uname", uname);
+  localStorage.setItem("wx_uname", uname);
 
-  //localStorage.setItem(uname + ":__openid", 'oO--NtwPrwXr0t02BvublP9wIu9Y');
+  //localStorage.setItem(uname + ":_openid", 'oO--NtwPrwXr0t02BvublP9wIu9Y');
 
 })();
 

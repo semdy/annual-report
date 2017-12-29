@@ -61,32 +61,32 @@
     var openidFromUrl = getQueryString('openid');
 
     if (openidFromUrl) {
-      storage.local.set("__openid", openidFromUrl);
+      storage.local.set("_openid", openidFromUrl);
       callback();
       return
     }
 
     var codeFromUrl = getQueryString('code');
-    var codeFromLocal = storage.local.get('__code');
+    var codeFromLocal = storage.local.get('_code');
 
     debug('code:' + codeFromUrl);
 
     if (!codeFromUrl) {
-      storage.local.remove('__openid');
+      storage.local.remove('_openid');
       clearCache();
       alert('缺少code');
       return
     }
 
     if (codeFromLocal !== codeFromUrl) {
-      storage.local.remove('__openid');
+      storage.local.remove('_openid');
       debug('requireOpenId...');
       getOpenidByCode(codeFromUrl, function (retStr) {
         if (typeof retStr.code === 'number' && retStr.code === 0) {
           var message = JSON.parse(retStr["message"]);
           var wxopenid = message["openid"];
-          storage.local.set("__openid", wxopenid);
-          storage.local.set("__code", codeFromUrl);
+          storage.local.set("_openid", wxopenid);
+          storage.local.set("_code", codeFromUrl);
           callback();
         } else {
           debug(JSON.stringify(retStr));
@@ -104,9 +104,9 @@
    */
   var isUserFollowed = function (callback) {
 
-    var user = storage.local.get("user");
-    var _sessionid = storage.local.get("__sessionid");
-    var _openid = storage.local.get("__openid");
+    var user = storage.local.get("_user");
+    var _sessionid = storage.local.get("_sessionid");
+    var _openid = storage.local.get("_openid");
 
     if (!user && !_sessionid) {
       debug('isUserFollowed...');
@@ -118,7 +118,7 @@
       }).then(function (ret) {
         var isFollowed = (ret.data || {}).subscribe === 1 ? true : false;
         if (isFollowed) {
-          storage.local.set("__isFollowed", isFollowed);
+          storage.local.set("_isFollowed", isFollowed);
         }
         callback(isFollowed);
       }).catch(function () {
@@ -132,16 +132,16 @@
 
   //请求用户信息
   function requireUserInfo(callback) {
-    if (!isCacheUseful('user')) {
+    if (!isCacheUseful('_user')) {
       debug('requireUserInfo...');
       ajaxUtils.get(
         URLObj.Config.urls.userinfo,
         {
           uname: URLObj.Config.uname,
-          __openid: storage.local.get("__openid")
+          __openid: storage.local.get("_openid")
         }).then(function (retStr) {
-        storage.local.set("user", retStr);
-        storage.local.set("__sessionid", retStr.SESSIONID);
+        storage.local.set("_user", retStr);
+        storage.local.set("_sessionid", retStr.SESSIONID);
         callback();
       }).catch(function (e) {
         if (e.status === 456) {
@@ -154,9 +154,9 @@
   }
 
   function clearCache() {
-    storage.local.remove("__isFollowed");
-    storage.local.remove("__sessionid");
-    storage.local.remove("user");
+    storage.local.remove("_isFollowed");
+    storage.local.remove("_sessionid");
+    storage.local.remove("_user");
   }
 
   function debug(msg) {
