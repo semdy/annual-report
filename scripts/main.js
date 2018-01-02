@@ -157,9 +157,9 @@
   }
 
   function page5(data) {
-    $("#receive-redb, #receive-redb2").text(data.shareredbag||0);
-    $("#send-redb, #send-redb2").text(data.sendredbag||0);
-    $("#reward-redb").text(data.getredbag||0);
+    $("#receive-redb, #receive-redb2").text(data.getredbag||0);
+    $("#send-redb, #send-redb2").text(data.shareredbag||0);
+    $("#reward-redb").text(data.sendredbag||0);
     if (!openid) {
       $("#genbtn").remove();
     } else {
